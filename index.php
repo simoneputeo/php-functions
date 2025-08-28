@@ -1,26 +1,4 @@
-<?php 
-function generaPassword($len) {
-
-$pool = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.<>/?";
-  $pwd = "";
-  for ($i = 0; $i < $len; $i++) {
-  $idx = random_int(0, strlen($pool)-1); 
-  $pwd .= $pool[$idx];
-  }
-
-  return $pwd;
-}
-if (isset($_GET['length'])) {
-    $len = (int) $_GET['length'];
-    if ($len < 8) $len = 8;
-    if ($len > 64) $len = 64;
-    $pwd = generaPassword($len);
-    echo "<p>Password generata: <strong>" . htmlspecialchars($pwd) . "</strong></p>";
-}
-else {
-    echo "<p>Inserisci la lunghezza della password (minimo 8, massimo 64).</p>";
-}
-?>
+<?php require_once 'functions.php'; ?>
 <!DOCTYPE html>
 <html>
 <body>
