@@ -1,4 +1,18 @@
-<?php require_once 'functions.php'; ?>
+<?php 
+session_start();
+require_once 'functions.php'; 
+
+if (isset($_GET['length'])) {
+    $len = (int) $_GET['length'];
+    if ($len < 8) $len = 8;
+    if ($len > 64) $len = 64;
+
+    $_SESSION['pwd'] = generaPassword($len);
+    header('Location: result.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <body>
